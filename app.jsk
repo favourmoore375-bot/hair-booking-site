@@ -1,0 +1,105 @@
+import { useState } from "react";
+
+export default function App() {
+  const [service, setService] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  const services = [
+    { name: "Knotless Braids", price: "$150", duration: "4 hrs" },
+    { name: "Silk Press", price: "$80", duration: "2 hrs" },
+    { name: "Wig Install", price: "$120", duration: "3 hrs" },
+  ];
+
+  return (
+    <div style={{ fontFamily: "Arial", padding: "20px" }}>
+      
+      {/* HERO */}
+      <section style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1>Luxury Hair Studio</h1>
+        <p>Book your next hairstyle with ease</p>
+
+        <a href="https://calendly.com/YOUR-LINK" target="_blank">
+          <button style={{ padding: "10px 20px", cursor: "pointer" }}>
+            Book Appointment
+          </button>
+        </a>
+      </section>
+
+      {/* SERVICES */}
+      <section>
+        <h2>Services</h2>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          {services.map((s, i) => (
+            <div
+              key={i}
+              onClick={() => setService(s.name)}
+              style={{
+                border: "1px solid #ccc",
+                padding: "15px",
+                borderRadius: "10px",
+                cursor: "pointer",
+                width: "200px",
+              }}
+            >
+              <h3>{s.name}</h3>
+              <p>{s.price}</p>
+              <p>{s.duration}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BOOKING */}
+      <section style={{ marginTop: "40px" }}>
+        <h2>Book Appointment</h2>
+
+        <div style={{ maxWidth: "300px" }}>
+          <input
+            type="text"
+            placeholder="Selected Service"
+            value={service}
+            readOnly
+            style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+          />
+
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+          />
+
+          <input
+            type="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+          />
+
+          <button style={{ padding: "10px", width: "100%" }}>
+            Confirm Booking
+          </button>
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section style={{ marginTop: "40px" }}>
+        <h2>Gallery</h2>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ width: "100px", height: "100px", background: "#ddd" }} />
+          <div style={{ width: "100px", height: "100px", background: "#ccc" }} />
+          <div style={{ width: "100px", height: "100px", background: "#bbb" }} />
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section style={{ marginTop: "40px", textAlign: "center" }}>
+        <h2>Contact</h2>
+        <p>Instagram: @yourhairpage</p>
+        <p>Phone: (123) 456-7890</p>
+      </section>
+
+    </div>
+  );
+}
